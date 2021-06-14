@@ -1,6 +1,8 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState } from 'react';
+import uuid from 'uuid/dist/v4';
+import PropTypes from 'prop-types';
 
-const Formulario = () => {
+const Formulario = ({crearCita}) => {
 
   //crear State para citas
 
@@ -11,6 +13,10 @@ const Formulario = () => {
     hora:'',
     sintomas:''
   })
+
+  // state para errores en formulario
+
+  const [error, actualizarError] = useState(false)
 
   const AcutalizarState = e => {
     actualizarCita({
@@ -23,14 +29,33 @@ const Formulario = () => {
 
   const submitCita = e => {
     e.preventDefault();
+   // Validando
+    if(mascota.trim() ==='' || propietario.trim() ==='' ||  fecha.trim() ==='' ||  hora.trim() ==='' ||  sintomas.trim() ===''){
+      actualizarError(true);
+      return;
+    }
 
-    // Validando
+    //Eliminar mensaje previo
+    actualizarError(false);
 
     //Asignar id
 
+    cita.id = uuid();
+
+  
+
     //Crear la cita
+    crearCita(cita);
+
 
     //reiniciar la cita
+    actualizarCita({
+      mascota:'',
+      propietario:'',
+      fecha:'',
+      hora:'',
+      sintomas:''
+    });
 
   }
 
@@ -38,6 +63,7 @@ const Formulario = () => {
   return (
     <Fragment>
       <h2>Crear Cita</h2>
+      {error? <p className="alerta-error">Todos los campos son obligatorios</p>: null}
       <form
         onSubmit={submitCita}
       >
@@ -91,4 +117,8 @@ const Formulario = () => {
   );
 }
 
+
+Formulario.propTypes = {
+  crearCita: PropTypes.func.isRequired
+}
 export default Formulario;
