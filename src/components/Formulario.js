@@ -20,7 +20,7 @@ const Formulario = ({crearCita}) => {
 
   const AcutalizarState = e => {
     actualizarCita({
-      ...cita,
+      ...cita, 
       [e.target.name]: e.target.value
     })
   }
@@ -29,7 +29,7 @@ const Formulario = ({crearCita}) => {
 
   const submitCita = e => {
     e.preventDefault();
-   // Validando
+   // Validando saddasd 
     if(mascota.trim() ==='' || propietario.trim() ==='' ||  fecha.trim() ==='' ||  hora.trim() ==='' ||  sintomas.trim() ===''){
       actualizarError(true);
       return;

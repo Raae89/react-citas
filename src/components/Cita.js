@@ -6,7 +6,7 @@ const Cita = ({cita, eliminarCita}) =>  (
 
     <div className="cita">
       <p>Mascotas: <span>{cita.mascota}</span></p>
-      <p>Dueno: <span>{cita.propietario}</span></p>
+      <p>Duenos: <span>{cita.propietario}</span></p>
       <p>Fecha: <span>{cita.fecha}</span></p>
       <p>Hora: <span>{cita.hora}</span></p>
       <p>Sintomas: <span>{cita.sintomas}</span></p>
