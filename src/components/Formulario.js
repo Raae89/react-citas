@@ -14,7 +14,7 @@ const Formulario = ({crearCita}) => {
     sintomas:''
   })
 
-  // state para errores en formulario
+  // state para errores en formularioasdasd
 
   const [error, actualizarError] = useState(false)
 
